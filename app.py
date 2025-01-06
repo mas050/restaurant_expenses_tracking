@@ -146,7 +146,7 @@ def main():
 
     # Define the options for dropdowns
     name_options = ["", "Katy", "Sebastien"]
-    restaurant_options = ["", "Imperial", "Ramen", "Baton Rouge", "Marathon", "Pho Place", "Starbuck"]
+    restaurant_options = ["", "Imperial", "Ramen", "Baton Rouge", "Marathon", "Miss Pho", "Indian","Starbucks"]
 
     col1, col2 = st.columns(2)
     
