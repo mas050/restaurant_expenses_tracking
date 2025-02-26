@@ -1,0 +1,8 @@
+streamlit>=1.31.0
+pandas>=2.1.1
+numpy>=1.26.0
+altair>=5.1.2
+google-auth>=2.23.0
+google-api-python-client>=2.100.0
+protobuf>=4.24.4
+watchdog>=3.0.0
