@@ -75,7 +75,7 @@ st.markdown("""
         border: 1px solid #e0e0e0;
     }
     .metric-value {
-        font-size: 2rem;
+        font-size: 1.8rem;
         font-weight: bold;
         color: #333333;
     }
@@ -411,8 +411,8 @@ def main():
             st.session_state.confirm_deletion = False
     
     # App Header
-    st.markdown('<p style="font-size: 1.8rem; font-weight: 600; color: #FF4B4B; margin-bottom: 0.5rem; text-align: left; margin-left: 0; padding-left: 0;">Restaurant Expense Tracker</p>', unsafe_allow_html=True)
-    st.markdown('<p style="font-size: 1.8rem; font-weight: 600; color: white; margin-top: 0; text-align: left; margin-left: 0; padding-left: 0; text-shadow: 1px 1px 2px rgba(0,0,0,0.2);">Keep track of shared dining expenses between Katy & Sebastien</p>', unsafe_allow_html=True)
+    st.markdown('<p style="font-size: 1.5rem; font-weight: 600; color: #FF4B4B; margin-bottom: 0.3rem; text-align: left; margin-left: 0; padding-left: 0;">Restaurant Expense Tracker</p>', unsafe_allow_html=True)
+    st.markdown('<p style="font-size: 1.1rem; font-weight: 400; color: white; margin-top: 0; text-align: left; margin-left: 0; padding-left: 0; text-shadow: 0px 0px 1px rgba(0,0,0,0.2);">Keep track of shared dining expenses between Katy & Sebastien</p>', unsafe_allow_html=True)
     
     # Initialize service early
     try:
@@ -445,10 +445,10 @@ def main():
             # Show balance prominently
             st.markdown(f"""
             <div class="card">
-                <h3 style="color: black;">Current Balance</h3>
+                <h3 style="color: black; font-size: 1.3rem; margin-bottom: 10px;">Current Balance</h3>
                 <div class="summary-box {balance_class}">
-                    <h2>{balance_text}</h2>
-                    <h1>${balance_amount:.2f}</h1>
+                    <div style="font-size: 1.2rem; font-weight: 600; margin-bottom: 8px;">{balance_text}</div>
+                    <div style="font-size: 1.8rem; font-weight: 700;">${balance_amount:.2f}</div>
                 </div>
             </div>
             """, unsafe_allow_html=True)
