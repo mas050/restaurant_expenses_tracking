@@ -636,8 +636,11 @@ def main():
                         recent_months = recent_months[recent_months['Month'].isin(last_6_months)]
                     
                     if not recent_months.empty:
+                        # Create a list of months in chronological order for sorting
+                        month_order = sorted(recent_months['Month'].unique())
+                        
                         chart = alt.Chart(recent_months).mark_line(point=True).encode(
-                            x=alt.X('Month:N', title='Month', sort=None),
+                            x=alt.X('Month:N', title='Month', sort=month_order),  # Sort in chronological order
                             y=alt.Y('Amount:Q', title='Amount ($)'),
                             color=alt.Color('Name:N', title='Person'),
                             tooltip=['Month', 'Name', alt.Tooltip('Amount:Q', format='$.2f')]
@@ -923,8 +926,11 @@ def main():
                 st.subheader("Monthly Spending by Person")
                 
                 if 'monthly_by_person' in chart_data and not chart_data['monthly_by_person'].empty:
+                    # Sort months in chronological order
+                    month_order = sorted(chart_data['monthly_by_person']['Month'].unique())
+                    
                     monthly_chart = alt.Chart(chart_data['monthly_by_person']).mark_bar().encode(
-                        x=alt.X('Month:N', title='Month'),
+                        x=alt.X('Month:N', title='Month', sort=month_order),
                         y=alt.Y('Amount:Q', title='Amount ($)'),
                         color=alt.Color('Name:N', title='Person'),
                         tooltip=['Month', 'Name', alt.Tooltip('Amount:Q', format='$.2f')]
