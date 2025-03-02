@@ -45,21 +45,6 @@ st.markdown("""
         text-align: center;
         font-weight: 600;
     }
-    .positive {
-        background-color: #e6ffe6;
-        color: #006600;
-        border: 1px solid #006600;
-    }
-    .negative {
-        background-color: #ffe6e6;
-        color: #990000;
-        border: 1px solid #990000;
-    }
-    .neutral {
-        background-color: #e6f3ff;
-        color: #004080;
-        border: 1px solid #004080;
-    }
     .footer {
         margin-top: 3rem;
         text-align: center;
@@ -442,48 +427,46 @@ def main():
                 balance_class = "negative"
                 balance_amount = abs(amount_diff)
             
-            # Show balance prominently
-            st.markdown(f"""
-            <div class="card">
-                <h3 style="color: black; font-size: 1.3rem; margin-bottom: 10px;">Current Balance</h3>
-                <div class="summary-box {balance_class}">
-                    <div style="font-size: 1.2rem; font-weight: 600; margin-bottom: 8px;">{balance_text}</div>
-                    <div style="font-size: 1.8rem; font-weight: 700;">${balance_amount:.2f}</div>
-                </div>
-            </div>
-            """, unsafe_allow_html=True)
+            # Remove the standalone Current Balance box and add it to the metrics row
+            col1, col2, col3, col4, col5 = st.columns(5)
             
-            # Metrics row for quick summary
-            col1, col2, col3, col4 = st.columns(4)
             with col1:
                 st.markdown(f"""
                 <div class="metric-card">
-                    <div class="metric-value">${summary_table.loc['Total', 'Katy']:.2f}</div>
-                    <div class="metric-label">Katy's Total Spending</div>
+                    <div style="font-size: 1rem; color: black; font-weight: 500; margin-bottom: 8px;">{balance_text}</div>
+                    <div class="metric-value">${balance_amount:.2f}</div>
                 </div>
                 """, unsafe_allow_html=True)
             
             with col2:
                 st.markdown(f"""
                 <div class="metric-card">
-                    <div class="metric-value">${summary_table.loc['Total', 'Sebastien']:.2f}</div>
-                    <div class="metric-label">Sebastien's Total Spending</div>
+                    <div style="font-size: 1rem; color: black; font-weight: 500; margin-bottom: 8px;">Katy's Total Spending</div>
+                    <div class="metric-value">${summary_table.loc['Total', 'Katy']:.2f}</div>
                 </div>
                 """, unsafe_allow_html=True)
             
             with col3:
                 st.markdown(f"""
                 <div class="metric-card">
-                    <div class="metric-value">{int(summary_table.loc['Total', 'Katy (Count)'])}</div>
-                    <div class="metric-label">Katy's Meals</div>
+                    <div style="font-size: 1rem; color: black; font-weight: 500; margin-bottom: 8px;">Sebastien's Total Spending</div>
+                    <div class="metric-value">${summary_table.loc['Total', 'Sebastien']:.2f}</div>
                 </div>
                 """, unsafe_allow_html=True)
             
             with col4:
                 st.markdown(f"""
                 <div class="metric-card">
+                    <div style="font-size: 1rem; color: black; font-weight: 500; margin-bottom: 8px;">Katy's Meals</div>
+                    <div class="metric-value">{int(summary_table.loc['Total', 'Katy (Count)'])}</div>
+                </div>
+                """, unsafe_allow_html=True)
+            
+            with col5:
+                st.markdown(f"""
+                <div class="metric-card">
+                    <div style="font-size: 1rem; color: black; font-weight: 500; margin-bottom: 8px;">Sebastien's Meals</div>
                     <div class="metric-value">{int(summary_table.loc['Total', 'Sebastien (Count)'])}</div>
-                    <div class="metric-label">Sebastien's Meals</div>
                 </div>
                 """, unsafe_allow_html=True)
         
